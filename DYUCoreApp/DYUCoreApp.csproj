@@ -18,4 +18,12 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DYUCoreApp.Application\DYUCoreApp.Application.csproj" />
+    <ProjectReference Include="..\DYUCoreApp.Data\DYUCoreApp.Data.csproj" />
+    <ProjectReference Include="..\DYUCoreApp.Infrastructure\DYUCoreApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\TeduCoreApp.Data.EF\TeduCoreApp.Data.EF.csproj" />
+    <ProjectReference Include="..\TeduCoreApp.Utilities\TeduCoreApp.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>
