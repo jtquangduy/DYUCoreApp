@@ -3,9 +3,11 @@ using DYUCoreApp.Data.Interfaces;
 using DYUCoreApp.Infrastructure.SharedKernel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DYUCoreApp.Data.Entities
 {
+    [Table("ProductCategories")]
     public class ProductCategory : DomainEntity<int>, IHasSeoMetaData, ISwitchable, ISortable, IDateTracking
     {
         public ProductCategory()
