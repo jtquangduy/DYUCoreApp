@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DYUCoreApp.Data.Entities;
+using DYUCoreApp.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using DYUCoreApp.Data;
-using DYUCoreApp.Models;
-using DYUCoreApp.Services;
+using TeduCoreApp.Data.EF;
 
 namespace DYUCoreApp
 {
@@ -26,21 +22,26 @@ namespace DYUCoreApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                o => o.MigrationsAssembly("TeduCoreApp.Data.EF")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
+            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
+
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<DbInitializer>();
 
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +64,7 @@ namespace DYUCoreApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            dbInitializer.Seed().Wait();
         }
     }
 }
