@@ -5,8 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220106164501_Initial.cs" />
+    <Compile Remove="Migrations\20220106164635_Initial.cs" />
+    <Compile Remove="Migrations\20220106164823_Initial.cs" />
+    <Compile Remove="Migrations\20220106165721_Initial.cs" />
+    <Compile Remove="Migrations\20220106171500_Initial.cs" />
+    <Compile Remove="Migrations\20220106172005_Initial.cs" />
+    <Compile Remove="Migrations\20220106172407_Initial.cs" />
+    <Compile Remove="Migrations\20220106172551_Initial.cs" />
+    <Compile Remove="Migrations\20220106173350_Initial.cs" />
+    <Compile Remove="Migrations\20220106173918_Initial.cs" />
+    <Compile Remove="Migrations\20220106174048_Initial.cs" />
+    <Compile Remove="Migrations\20220106174324_Initial.cs" />
+    <Compile Remove="Migrations\20220106175004_Initial.cs" />
+    <Compile Remove="Migrations\20220106175427_Initial.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
