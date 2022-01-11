@@ -3,6 +3,7 @@ using DYUCoreApp.Application.Implementation;
 using DYUCoreApp.Application.Interfaces;
 using DYUCoreApp.Data.Entities;
 using DYUCoreApp.Data.IRepositories;
+using DYUCoreApp.Helpers;
 using DYUCoreApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -68,6 +69,8 @@ namespace DYUCoreApp
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbInitializer>();
 
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
+
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
 
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -102,7 +105,7 @@ namespace DYUCoreApp
 
                 routes.MapRoute(
                    name: "areaRoute",
-                   template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                   template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
             });
         }
     }
