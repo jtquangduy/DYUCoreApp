@@ -1,9 +1,6 @@
 ﻿using DYUCoreApp.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -29,7 +26,7 @@ namespace DYUCoreApp.Helpers
                 new Claim("Email",user.Email),
                 new Claim("FullName",user.FullName),
                 new Claim("Avatar",user.Avatar??string.Empty),
-                new Claim("Role",string.Join(";",roles))
+                new Claim("Roles",string.Join(";",roles))
             });
             return principal;
         }

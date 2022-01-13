@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DYUCoreApp.Application.ViewModels.Product;
+using DYUCoreApp.Application.ViewModels.System;
 using DYUCoreApp.Data.Entities;
 
 namespace DYUCoreApp.Application.AutoMapper
@@ -9,6 +10,8 @@ namespace DYUCoreApp.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<ProductCategory, ProductCategoryViewModel>();
+
+            CreateMap<Function, FunctionViewModel>();
         }
     }
 }
