@@ -11,6 +11,8 @@ namespace DYUCoreApp.Application.AutoMapper
         {
             CreateMap<ProductCategory, ProductCategoryViewModel>();
 
+            CreateMap<Product, ProductViewModel>();
+
             CreateMap<Function, FunctionViewModel>();
         }
     }
