@@ -1,5 +1,5 @@
 ﻿var dyu = {
-    config: {
+    configs: {
         pageSize: 10,
         pageIndex: 1
     },
