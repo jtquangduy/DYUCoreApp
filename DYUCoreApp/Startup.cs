@@ -4,6 +4,7 @@ using DYUCoreApp.Application.Interfaces;
 using DYUCoreApp.Data.Entities;
 using DYUCoreApp.Data.IRepositories;
 using DYUCoreApp.Helpers;
+using DYUCoreApp.Infrastructure.Interfaces;
 using DYUCoreApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -72,6 +73,9 @@ namespace DYUCoreApp
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
 
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
             //Repositories
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
